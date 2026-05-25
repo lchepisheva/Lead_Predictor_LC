@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Predictor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar / Left Panel -->
+        <aside class="sidebar panel">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                <h2>LeadPredictor</h2>
+            </div>
+            
+            <div class="form-group">
+                <label>Language</label>
+                <select>
+                    <option>🇺🇸 English</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Currency</label>
+                <select>
+                    <option>$ US Dollar</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Campaign Start</label>
+                <input type="date" value="2026-05-08">
+            </div>
+
+            <div class="form-group">
+                <label>Campaign End</label>
+                <input type="date" value="2026-11-04">
+            </div>
+
+            <div class="form-group">
+                <label>Total Revenue</label>
+                <div class="input-with-icon">
+                    <span>$</span>
+                    <input type="number" value="10000">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Avg. Order Value</label>
+                <div class="input-with-icon">
+                    <span>$</span>
+                    <input type="number" value="1000">
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Section: Chart & Cards -->
+            <div class="top-section">
+                <!-- Chart Area Placeholder -->
+                <div class="chart-container panel">
+                    <div class="chart-placeholder">
+                        <div class="chart-y-axis">
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                        </div>
+                        <div class="chart-area">
+                            <div class="chart-bars">
+                                <div class="bar-group"><div class="bar part1" style="width: 5%"></div><div class="bar part2" style="width: 25%"></div></div>
+                                <div class="bar-group"><div class="bar part1" style="width: 8%"></div><div class="bar part2" style="width: 40%"></div></div>
+                                <div class="bar-group tooltip-active">
+                                    <div class="bar part1" style="width: 12%"></div><div class="bar part2" style="width: 50%"></div>
+                                    <div class="chart-tooltip">Month #3<br>Prospects: 63<br>Leads: 13<br>Customers: 5</div>
+                                </div>
+                                <div class="bar-group"><div class="bar part1" style="width: 15%"></div><div class="bar part2" style="width: 70%"></div></div>
+                                <div class="bar-group"><div class="bar part1" style="width: 20%"></div><div class="bar part2" style="width: 85%"></div></div>
+                                <div class="bar-group"><div class="bar part1" style="width: 25%"></div><div class="bar part2" style="width: 100%"></div></div>
+                            </div>
+                            <div class="chart-x-axis">
+                                <span>0 people</span>
+                                <span>20 people</span>
+                                <span>40 people</span>
+                                <span>60 people</span>
+                                <span>80 people</span>
+                                <span>100 people</span>
+                                <span>120 people</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cards -->
+                <div class="cards-container">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">📁 Prospects</span>
+                            <span class="card-percentage">100%</span>
+                        </div>
+                        <div class="card-value">125</div>
+                        <div class="progress-bar"><div class="progress" style="width: 100%;"></div></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">👤 Leads</span>
+                            <span class="card-percentage">20%</span>
+                        </div>
+                        <div class="card-value">25</div>
+                        <div class="progress-bar"><div class="progress" style="width: 20%;"></div></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">🏆 Customers</span>
+                            <span class="card-percentage">8%</span>
+                        </div>
+                        <div class="card-value">10</div>
+                        <div class="progress-bar"><div class="progress" style="width: 8%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section: Sliders -->
+            <div class="bottom-section panel">
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <label>Lead Response Rate</label>
+                    </div>
+                    <div class="slider-wrapper">
+                        <input type="range" id="leadRate" min="0" max="100" value="40" class="custom-slider">
+                        <span class="slider-value" id="leadRateVal">40.00%</span>
+                    </div>
+                </div>
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <label>Prospect Response Rate</label>
+                    </div>
+                    <div class="slider-wrapper">
+                        <input type="range" id="prospectRate" min="0" max="100" value="20" class="custom-slider">
+                        <span class="slider-value" id="prospectRateVal">20.00%</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
