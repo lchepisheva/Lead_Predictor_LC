@@ -6,7 +6,8 @@ function calculateLeads(customers, leadResponseRate) {
     return customers * 100 / leadResponseRate;
 }
 
-function calculateProspects(leads, prospectResponseRate) {
+function calculateProspects(customers, leadResponseRate, prospectResponseRate) {
+    const leads = calculateLeads(customers, leadResponseRate);
     return leads * 100 / prospectResponseRate;
 }
 
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Calculate based on the formula
         const customers = Math.round(calculateCustomers(totalRevenue, avgOrderValue));
-        const leads = Math.round(calculateLeads(customers, lRate));
+        const leads = Math.round(calculateLeads(customercustomers, lRateate));
         const prospects = Math.round(calculateProspects(leads, pRate));
 
         // Update Values
