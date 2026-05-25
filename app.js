@@ -33,10 +33,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressCustomers = document.getElementById('progress-customers');
 
     function updateCalculations() {
-        const totalRevenue = parseFloat(totalRevenueInput.value) || 0;
-        const avgOrderValue = parseFloat(avgOrderValueInput.value) || 1;
-        const lRate = parseFloat(leadRate.value) || 1;
-        const pRate = parseFloat(prospectRate.value) || 1;
+        // Enforce checks for empty values and negative numbers
+        let totalRevenue = parseFloat(totalRevenueInput.value);
+        if (isNaN(totalRevenue) || totalRevenue < 0) totalRevenue = 0;
+
+        // Prevent division by zero and handle negatives for average order value
+        let avgOrderValue = parseFloat(avgOrderValueInput.value);
+        if (isNaN(avgOrderValue) || avgOrderValue <= 0) avgOrderValue = 1;
+
+        // Prevent division by zero for rates
+        let lRate = parseFloat(leadRate.value);
+        if (isNaN(lRate) || lRate <= 0) lRate = 0.01;
+
+        let pRate = parseFloat(prospectRate.value);
+        if (isNaN(pRate) || pRate <= 0) pRate = 0.01;
 
         // Calculate based on the formula
         const customers = Math.round(calculateCustomers(totalRevenue, avgOrderValue));
