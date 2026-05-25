@@ -135,6 +135,28 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     height: 300px;
     width: 100%;
     position: relative;
+    padding-left: 30px;
+    padding-bottom: 20px;
+}
+
+.axis-title-y {
+    position: absolute;
+    left: -25px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.axis-title-x {
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    font-weight: 500;
 }
 
 .chart-y-axis {
@@ -150,6 +172,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     flex-grow: 1;
     border-left: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 100% 16.666%, 16.666% 100%;
+    background-position: 0 0;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -168,27 +195,38 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 0.7rem;
 }
 
-/* Dummy Bars */
+/* Chart Bars */
 .bar-group {
     display: flex;
     height: 30px;
     position: relative;
+    cursor: pointer;
 }
 
-.bar {
+.bar-group:hover {b1becf;
     height: 100%;
 }
-.part1 {
-    background-color: #a0aec0;
+
+.segment-leads {
+    background-color: #7e8a9b;
+    height: 100%;
 }
-.part2 {
-    background-color: #4a5568;
+
+.segment-prospects {
+    background-color: #5c6678;
+    height: 100%;
+}
+
+.segment-prospects {
+    background-color: #64748b;
+    height: 100%;
 }
 
 .chart-tooltip {
+    display: none;
     position: absolute;
-    top: -50px;
-    left: 50%;
+    top: -55px;
+    left: 10px;
     background: #4a5568;
     padding: 8px;
     border-radius: 6px;
@@ -197,6 +235,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     z-index: 10;
     border: 1px solid #718096;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.bar-group:hover .chart-tooltip {
+    display: block;
 }
 
 /* Cards */
@@ -207,14 +251,27 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .card {
-    background-color: var(--card-bg);
     border-radius: 12px;
     padding: 20px;
-    color: #171b26;
     display: flex;
     flex-direction: column;
     gap: 12px;
     flex: 1;
+}
+
+.card-prospects {
+    background-color: #5c667b;
+    color: #ffffff;
+}
+
+.card-leads {
+    background-color: #7e8a9b;
+    color: #ffffff;
+}
+
+.card-customers {
+    background-color: #b1becf;
+    color: #ffffff;
 }
 
 .card-header {
@@ -227,21 +284,37 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .card-value {
     font-size: 2rem;
     font-weight: 700;
-    color: #ffffff;
 }
 
 .progress-bar {
-    background-color: rgba(255, 255, 255, 0.3);
-    height: 8px;
-    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 10px;
+    border-radius: 5px;
     width: 100%;
-    overflow: hidden;
+    position: relative;
 }
 
 .progress {
-    background-color: #ffffff;
     height: 100%;
-    border-radius: 4px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.progress::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(0,0,0,0.3);
 }
 
 /* Bottom Section */
@@ -267,9 +340,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .custom-slider {
     -webkit-appearance: none;
     width: 100%;
-    height: 8px;
-    background: var(--input-bg);
-    border-radius: 4px;
+    height: 10px;
+    background: linear-gradient(to right, #b1becf var(--val, 50%), #374151 var(--val, 50%));
+    border-radius: 5px;
     outline: none;
     border: none;
 }
@@ -277,8 +350,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .custom-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     background: #ffffff;
     cursor: pointer;
