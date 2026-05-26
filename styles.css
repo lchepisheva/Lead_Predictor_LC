@@ -203,7 +203,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
-.bar-group:hover {b1becf;
+.bar-group:hover {
+    background-color: #b1becf;
     height: 100%;
 }
 
